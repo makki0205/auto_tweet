@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from util.settings import settings
+from util.env import settings
 import json
 from requests_oauthlib import OAuth1Session
 
@@ -7,9 +7,7 @@ from requests_oauthlib import OAuth1Session
 class Twtter(object):
 
     def __init__(self):
-        keys = settings.get_twtter_conf()
-        self.tw = OAuth1Session(keys['CONSUMER_KEY'], keys['CONSUMER_SECRET'], keys[
-                                'ACCESS_TOKEN'], keys['ACCESS_SECRET'])
+        self.tw = OAuth1Session(settings.CONSUMER_KEY, settings.CONSUMER_SECRET, settings.ACCESS_TOKEN, settings. ACCESS_SECRET)
 
     def tweet(self, text):
         URL = 'https://api.twitter.com/1.1/statuses/update.json'
